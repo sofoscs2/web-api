@@ -25,15 +25,15 @@ In order to build and run project requires
 
 
 ## Curls for Match Requests: 
-## Get all matches : 
+### Get all matches : 
 ``` bash 
 curl --location 'http://localhost:8080/api/matches'
 ```     
-## Get match by Id : 
+### Get match by Id : 
 ``` bash 
 curl --location 'http://localhost:8080/api/matches/{id}'
 ```     
-## Create match : 
+### Create match : 
 ``` bash 
 curl --location --request POST 'http://localhost:8080/api/matches' \
 --header 'Content-Type: application/json' \
@@ -46,7 +46,7 @@ curl --location --request POST 'http://localhost:8080/api/matches' \
     "sport": "String Football/Basketball/Cricket/Tennis/Other"
 }'
 ```        
-## Update match by Id : 
+### Update match by Id : 
 ``` bash 
 curl --location --request PUT 'http://localhost:8080/api/matches/{id}' \
 --header 'Content-Type: application/json' \
@@ -59,21 +59,21 @@ curl --location --request PUT 'http://localhost:8080/api/matches/{id}' \
     "sport": "String Football/Basketball/Cricket/Tennis/Other"
 }'
  ```                            
-## Delete match by Id : 
+### Delete match by Id : 
 ``` bash 
 curl --location --request DELETE 'http://localhost:8080/api/matches/{id}'
 ```     
 
 ## Curls for Match Odds Requests:
-## Get all match odds:
+### Get all match odds:
 ``` bash 
 curl --location 'http://localhost:8080/api/match-odds'
 ```     
-## Get match odd by Id :
+### Get match odd by Id :
 ``` bash 
 curl --location 'http://localhost:8080/api/match-odds/{id}'
 ```     
-## Create match odd:
+### Create match odd:
 ``` bash 
 curl --location --request POST 'http://localhost:8080/api/match-odds' \
 --header 'Content-Type: application/json' \
@@ -83,7 +83,7 @@ curl --location --request POST 'http://localhost:8080/api/match-odds' \
     "odd": Double
 }'
 ```        
-## Update match odd by Id :
+### Update match odd by Id :
 ``` bash 
 curl --location --request PUT 'http://localhost:8080/api/match-odds/{id}' \
 --header 'Content-Type: application/json' \
@@ -93,7 +93,7 @@ curl --location --request PUT 'http://localhost:8080/api/match-odds/{id}' \
     "odd": Double
 }'
  ```                            
-## Delete match odd by Id :
+### Delete match odd by Id :
 ``` bash 
 curl --location --request DELETE 'http://localhost:8080/api/match-odds/{id}'
 ```   
