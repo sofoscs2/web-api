@@ -4,6 +4,7 @@
 - Maven framework (https://maven.apache.org/)
 - Spring Boot (https://projects.spring.io/spring-boot/)
 - IntelliJ IDEA (https://www.jetbrains.com/idea/)
+- PostgreSQL (https://www.postgresql.org/download/)
 
 ## Build Setup
 
