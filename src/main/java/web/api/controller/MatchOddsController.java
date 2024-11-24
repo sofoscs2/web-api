@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import web.api.dto.MatchOddsDto;
 import web.api.dto.MatchOddsRequest;
-import web.api.entity.MatchOdds;
 import web.api.service.MatchOddsService;
 
 import java.util.List;
@@ -34,13 +33,13 @@ public class MatchOddsController {
     @PostMapping
     public ResponseEntity<MatchOddsDto> createMatchOdds(@RequestBody MatchOddsRequest matchOddsRequest) {
         MatchOddsDto matchOdds = matchOddsService.createMatchOdds(matchOddsRequest);
-        return matchOdds != null ? ResponseEntity.ok(matchOdds) : ResponseEntity.notFound().build();
+        return matchOdds != null ? ResponseEntity.ok(matchOdds) : ResponseEntity.badRequest().build();
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<MatchOddsDto> updateMatchOdds(@PathVariable Long id, @RequestBody MatchOddsRequest matchOddsRequest) {
         MatchOddsDto matchOdds = matchOddsService.updateMatchOddsFromDto(id, matchOddsRequest);
-        return matchOdds != null ? ResponseEntity.ok(matchOdds) : ResponseEntity.notFound().build();
+        return matchOdds != null ? ResponseEntity.ok(matchOdds) : ResponseEntity.badRequest().build();
     }
 
     @DeleteMapping("/{id}")

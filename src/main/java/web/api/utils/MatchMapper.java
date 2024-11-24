@@ -11,7 +11,6 @@ public interface MatchMapper {
     @Mapping(target = "sport", expression = "java(SportDataEnum.getNameById(match.getSport()))")
     MatchDto toDto(Match match);
 
-    // Optionally map DTO back to Entity (if needed)
     @Mapping(target = "sport", expression = "java(SportDataEnum.getIdByName(matchDto.getSport()))")
     Match toEntity(MatchDto matchDto);
 }

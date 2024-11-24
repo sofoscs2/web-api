@@ -23,31 +23,10 @@ public class MatchOddsService {
 
     private final MatchOddsMapper matchOddsMapper;
 
-    public MatchOddsService(MatchOddsRepository matchOddsRepository, MatchRepository matchRepository, MatchOddsMapper matchOddsMapper) {
+    public MatchOddsService(MatchOddsRepository matchOddsRepository,  MatchRepository matchRepository, MatchOddsMapper matchOddsMapper) {
         this.matchOddsRepository = matchOddsRepository;
         this.matchRepository = matchRepository;
         this.matchOddsMapper = matchOddsMapper;
-    }
-
-    public List<MatchOdds> getAllMatchOdds() {
-        return matchOddsRepository.findAll();
-    }
-
-    public MatchOdds getMatchOddsById(Long id) {
-        return matchOddsRepository.findById(id).orElse(null);
-    }
-
-    public MatchOdds createMatchOdds(MatchOdds matchOdds) {
-        return matchOddsRepository.save(matchOdds);
-    }
-
-    public MatchOdds updateMatchOdds(Long id, MatchOdds updatedMatchOdds) {
-        return matchOddsRepository.findById(id)
-                .map(odds -> {
-                    odds.setSpecifier(updatedMatchOdds.getSpecifier());
-                    odds.setOdd(updatedMatchOdds.getOdd());
-                    return matchOddsRepository.save(odds);
-                }).orElse(null);
     }
 
     public void deleteMatchOdds(Long id) {
@@ -65,18 +44,12 @@ public class MatchOddsService {
         return matchOdds.map(matchOddsMapper::toDto).orElse(null);
     }
 
-    public MatchOddsDto createMatchOddsFromDto(MatchOddsDto matchOddsDto) {
-        MatchOdds matchOdds = matchOddsRepository.save(matchOddsMapper.toEntity(matchOddsDto));
-        return matchOddsMapper.toDto(matchOdds);
-    }
-
     public MatchOddsDto createMatchOdds(MatchOddsRequest matchOddsRequest) {
         Optional<Match> match = matchRepository.findById(matchOddsRequest.getMatchId());
         if (match.isEmpty()) return null;
-        MatchOdds matchOdds = new MatchOdds();
-        matchOdds.setMatch(match.get());
-        matchOdds.setOdd(matchOddsRequest.getOdd());
-        matchOdds.setSpecifier(matchOddsRequest.getSpecifier());
+        MatchOdds matchOdds = matchOddsRepository.findByMatchAndSpecifier(match.get(), matchOddsRequest.getSpecifier());
+        if (matchOdds  != null) return null;
+        matchOdds = matchOddsMapper.reqToEntity(matchOddsRequest, matchRepository);
         MatchOdds matchOddsResponse = matchOddsRepository.save(matchOdds);
         return matchOddsMapper.toDto(matchOddsResponse);
     }
@@ -93,4 +66,5 @@ public class MatchOddsService {
                 });
         return matchOdds.map(matchOddsMapper::toDto).orElse(null);
     }
+
 }
