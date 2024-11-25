@@ -110,10 +110,3 @@ docker images
 # Run Docker Image in a Container
 docker run -d -p 8080:8080 webapi
 ```
-## JMeter Setup
-
-- File : WebApiServices.jmx
-- Number of threads (Users) : 100
-- Ramp up period (seconds) : 60
-- Loop count : 100
-- Repeat process : 700
