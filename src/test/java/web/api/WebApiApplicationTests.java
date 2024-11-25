@@ -180,11 +180,11 @@ class WebApiApplicationTests {
         return resource;
     }
 
-    private MatchOddsRequest validMatchOddsRequest(Long matchId, String X) {
+    private MatchOddsRequest validMatchOddsRequest(Long matchId, String specifier) {
         MatchOddsRequest resource = new MatchOddsRequest();
         resource.setMatchId(matchId);
         resource.setOdd(1.5);
-        resource.setSpecifier(X);
+        resource.setSpecifier(specifier);
         return resource;
     }
 
